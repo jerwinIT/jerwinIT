@@ -1,6 +1,6 @@
 <div align="center">
 
-![Hero]([https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=160&section=header&text=Hey,%20I'm%20Jerwin%20👋&fontSize=38&fontColor=ffffff&fontAlignY=45&desc=Web%20Developer%20·%20GIS%20Systems%20·%20QA%20%26%20Automation%20·%20AI%20Explorer&descSize=15&descAlignY=68&descColor=a8d8ea](https://raw.githubusercontent.com/jerwinIT/jerwinIT/7a55d7025cfd9669fd1c3d1c30e51bc9da532289/public/images/JerwinREADMEHero.png))
+![Hero](https://raw.githubusercontent.com/jerwinIT/jerwinIT/main/public/images/JerwinREADMEHero.png)
 
 📍 Batangas, Philippines &nbsp;|&nbsp; 💡 I build things that solve real problems
 
