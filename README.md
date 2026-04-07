@@ -49,7 +49,7 @@ Full-stack web developer with a strong foundation across the entire **SDLC** —
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
 
----
+<!-- ---
 
 ## 🌐 Web + GIS Development
 
@@ -69,14 +69,14 @@ I integrate AI tools into my workflow deliberately — not to replace thinking, 
 ![Cursor](https://img.shields.io/badge/Cursor-000000?style=flat&logo=cursor&logoColor=white)
 ![GitHub Copilot](https://img.shields.io/badge/Copilot-181717?style=flat&logo=github&logoColor=white)
 
-The architecture, decisions, and understanding behind every project are still mine. Knowing _how_ to work with AI effectively is itself a modern developer skill — and I take it seriously.
+The architecture, decisions, and understanding behind every project are still mine. Knowing _how_ to work with AI effectively is itself a modern developer skill — and I take it seriously. -->
 
 <!-- ---
 
 <div align="center">
 
 *Open to collaborations, freelance work, and interesting problems worth solving.*
-
+a
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:your@email.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/jerwinIT)
 [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=vercel&logoColor=white)](https://jerwinIT.github.io)
