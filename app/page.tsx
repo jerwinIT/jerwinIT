@@ -248,9 +248,6 @@ export default function ProfilePage() {
         ? educationData
         : certificationData;
 
-  const selectedExperienceItem =
-    activeExperienceItems[experienceItemIndex] ?? activeExperienceItems[0];
-
   const filteredSkills =
     activeSkillFilter === "all"
       ? skillsMatrix
@@ -337,13 +334,31 @@ export default function ProfilePage() {
           <div className="sticky top-0 flex h-screen flex-col px-6 py-12">
             <div className="mb-10 flex flex-col items-center">
               <div className="mb-4 relative">
-                <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 ring-2 ring-primary/10 overflow-hidden">
+                <div className="relative h-24 w-24 overflow-hidden rounded-full bg-linear-to-br from-primary/20 to-primary/5 ring-2 ring-primary/10">
                   <Image
-                    src="/images/profile.jpg"
+                    src="/images/profile-darkmode.png"
                     alt="Jerwin Louise Peria"
                     width={96}
                     height={96}
-                    className="h-full w-full object-cover object-center"
+                    className={`absolute inset-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-700 ease-out ${
+                      isDarkMode
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-105"
+                    }`}
+                    priority
+                  />
+                  <Image
+                    src="/images/profile-lightmode.png"
+                    alt=""
+                    aria-hidden="true"
+                    width={96}
+                    height={96}
+                    className={`absolute inset-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-700 ease-out ${
+                      isDarkMode
+                        ? "opacity-0 scale-105"
+                        : "opacity-100 scale-100"
+                    }`}
+                    priority
                   />
                 </div>
               </div>
@@ -444,7 +459,7 @@ export default function ProfilePage() {
         </aside>
 
         {/* Mobile Header */}
-        <div className="fixed top-0 left-0 right-0 z-30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border lg:hidden">
+        <div className="fixed top-0 left-0 right-0 z-30 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 border-b border-border lg:hidden">
           <div className="container flex h-16 items-center justify-between px-4">
             <h1 className="text-lg font-bold">Jerwin Louise G. Peria</h1>
             <button
@@ -835,64 +850,58 @@ export default function ProfilePage() {
             {/* Experience Section */}
             <section
               id="experience"
-              className="mb-24 lg:mb-32 scroll-mt-24 min-h-[600px]"
+              className="mb-24 lg:mb-32 scroll-mt-24 min-h-150"
             >
               <h3 className="text-3xl lg:text-4xl font-bold mb-6 lg:mb-8">
                 Experience
               </h3>
 
-              <div className="mb-6 lg:mb-8 inline-flex items-center rounded-xl border border-border bg-card p-1">
-                <button
-                  onClick={() => {
-                    setActiveExperienceTab("certification");
-                    setExperienceItemIndex(0);
-                  }}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                    activeExperienceTab === "certification"
-                      ? "bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  Certification
-                </button>
-                <button
-                  onClick={() => {
-                    setActiveExperienceTab("experience");
-                    setExperienceItemIndex(0);
-                  }}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                    activeExperienceTab === "experience"
-                      ? "bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  Experience
-                </button>
-                <button
-                  onClick={() => {
-                    setActiveExperienceTab("education");
-                    setExperienceItemIndex(0);
-                  }}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                    activeExperienceTab === "education"
-                      ? "bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  Education
-                </button>
+              <div className="mb-6 lg:mb-8 flex gap-2 border-b border-border">
+                {[
+                  { id: "certification", label: "Certification" },
+                  { id: "experience", label: "Experience" },
+                  { id: "education", label: "Education" },
+                ].map((tab) => {
+                  const isActive = activeExperienceTab === tab.id;
+
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => {
+                        setActiveExperienceTab(
+                          tab.id as typeof activeExperienceTab,
+                        );
+                        setExperienceItemIndex(0);
+                      }}
+                      className={`px-4 py-2 text-sm font-medium transition-colors relative ${
+                        isActive
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {tab.label}
+                      {isActive && (
+                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
 
-              <div className="grid gap-6 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-8">
-                <div className="relative rounded-2xl border border-border bg-card p-4">
-                  <div className="absolute bottom-5 left-6 top-5 w-px bg-border" />
-                  <div className="space-y-1">
-                    {activeExperienceItems.map((item, index) => {
-                      const isActive = experienceItemIndex === index;
+              <div className="relative rounded-2xl border border-border bg-card p-4 lg:p-5">
+                <div className="absolute bottom-5 left-6 top-5 w-px bg-border" />
+                <div className="space-y-1">
+                  {activeExperienceItems.map((item, index) => {
+                    const isActive = experienceItemIndex === index;
+                    const canShowCertificateButton =
+                      activeExperienceTab === "certification" &&
+                      isActive &&
+                      "certificateUrl" in item &&
+                      !!item.certificateUrl;
 
-                      return (
+                    return (
+                      <div key={index} className="space-y-2">
                         <button
-                          key={index}
                           type="button"
                           onClick={() => setExperienceItemIndex(index)}
                           className={`group relative w-full rounded-xl py-3 pl-8 pr-3 text-left transition-all ${
@@ -900,7 +909,7 @@ export default function ProfilePage() {
                           }`}
                         >
                           <span
-                            className={`absolute left-[0.875rem] top-1/2 h-3 w-3 -translate-y-1/2 rounded-full border-2 transition-all ${
+                            className={`absolute left-3.5 top-1/2 h-3 w-3 -translate-y-1/2 rounded-full border-2 transition-all ${
                               isActive
                                 ? "border-primary bg-primary shadow-[0_0_0_4px_hsl(var(--primary)/0.15)]"
                                 : "border-border bg-background group-hover:border-primary/60"
@@ -922,51 +931,30 @@ export default function ProfilePage() {
                             {item.period}
                           </p>
                         </button>
-                      );
-                    })}
-                  </div>
-                </div>
 
-                {selectedExperienceItem && (
-                  <Card className="border-border/80 bg-card/80 shadow-sm backdrop-blur-sm transition-all duration-300">
-                    <CardHeader className="lg:p-7">
-                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                        <div className="space-y-1">
-                          <CardTitle className="text-xl lg:text-2xl">
-                            {selectedExperienceItem.title}
-                          </CardTitle>
-                          <CardDescription className="text-base lg:text-lg">
-                            {selectedExperienceItem.organization}
-                          </CardDescription>
-                        </div>
-                        <Badge variant="outline" className="w-fit text-xs">
-                          {selectedExperienceItem.period}
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    {activeExperienceTab === "certification" &&
-                      "certificateUrl" in selectedExperienceItem &&
-                      selectedExperienceItem.certificateUrl && (
-                        <CardContent className="pt-0 lg:px-7 lg:pb-7">
-                          <Button
-                            variant="default"
-                            size="sm"
-                            className="gap-2"
-                            asChild
-                          >
-                            <a
-                              href={selectedExperienceItem.certificateUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                        {canShowCertificateButton && (
+                          <div className="pl-8">
+                            <Button
+                              variant="default"
+                              size="sm"
+                              className="gap-2"
+                              asChild
                             >
-                              <ExternalLink className="h-4 w-4" />
-                              View Certificate
-                            </a>
-                          </Button>
-                        </CardContent>
-                      )}
-                  </Card>
-                )}
+                              <a
+                                href={item.certificateUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <ExternalLink className="h-4 w-4" />
+                                View Certificate
+                              </a>
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </section>
           </div>
@@ -974,7 +962,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Mobile Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-t border-border lg:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 z-30 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 border-t border-border lg:hidden">
         <div className="container flex items-center justify-around px-4 py-3">
           {navItems.map((item) => {
             const Icon = item.icon;
