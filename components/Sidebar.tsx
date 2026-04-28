@@ -55,21 +55,21 @@ export default function Sidebar() {
       <div className="sidebar-footer">
         <div className="socials">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/jerwinIT"
             target="_blank"
             aria-label="GitHub"
           >
             <FaGithub />
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://linkedin.com/in/jerwinperia"
             target="_blank"
             aria-label="LinkedIn"
           >
             <FaLinkedin />
           </a>
           <a
-            href="https://facebook.com/yourusername"
+            href="https://facebook.com/jerwinlouise.peria"
             target="_blank"
             aria-label="Facebook"
           >
