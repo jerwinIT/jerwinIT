@@ -40,7 +40,7 @@
 }
 
 .dark {
-  --background: oklch(0.1 0 0);
+  --background: oklch(15.434% 0.00002 271.152);
   --foreground: oklch(0.98 0 0);
   --card: oklch(0.13 0 0);
   --card-foreground: oklch(0.98 0 0);
@@ -75,9 +75,8 @@
 }
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
-  --font-sans: "Geist", "Geist Fallback";
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -122,10 +121,51 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+@utility font-heading {
+  font-family: var(--font-heading);
+}
+
+@utility font-body {
+  font-family: var(--font-sans);
 }
 
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Sections targeted by scrollIntoView / anchor links */
+[id="overview"],
+[id="skills"],
+[id="experience"],
+[id="education"],
+[id="projects"],
+[id="certificates"] {
+  /* Desktop default — small breathing room */
+  scroll-margin-top: 20px;
+}
+
+/* Mobile: push below the fixed header */
+@media (max-width: 1023px) {
+  [id="overview"],
+  [id="skills"],
+  [id="experience"],
+  [id="education"],
+  [id="projects"],
+  [id="certificates"] {
+    scroll-margin-top: 72px; /* 64px header + 8px gap */
+  }
 }

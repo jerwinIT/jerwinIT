@@ -7,14 +7,17 @@ import {
   Github,
   Linkedin,
   Facebook,
+  FileCode,
+  Medal,
 } from "lucide-react";
 
 export const navItems = [
-  { id: "overview", label: "Overview", icon: Home },
-  { id: "about", label: "About Me", icon: User },
+  { id: "overview", label: "Profile", icon: User },
   { id: "skills", label: "Skills", icon: Code },
-  { id: "projects", label: "Projects", icon: Briefcase },
-  { id: "experience", label: "Experience", icon: GraduationCap },
+  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "education", label: "Education", icon: GraduationCap },
+  { id: "projects", label: "Projects", icon: FileCode },
+  { id: "certificates", label: "Certificates", icon: Medal },
 ];
 
 export const socialLinks = [
