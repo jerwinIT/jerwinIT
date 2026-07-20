@@ -58,6 +58,7 @@ export interface Project {
   readonly technologies: readonly string[];
   readonly demoUrl?: string;
   readonly repoUrl?: string | null;
+  readonly previewImage?: string;
 }
 
 // ─── Experience ────────────────────────────────────────────────────────────────

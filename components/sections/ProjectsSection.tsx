@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -20,134 +21,96 @@ const projectData: Record<ProjectTab, readonly Project[]> = {
   design: designProjects,
 };
 
-// ─── Project Card ─────────────────────────────────────────────────────────────
+// ─── Project Row ──────────────────────────────────────────────────────────────
+// Each project is a static "log entry": line number, thumbnail, title, and
+// description always visible — no expand/collapse. The first entry in the
+// list is rendered larger, as the featured / most-recent build.
 
-function ProjectCard({
+function ProjectRow({
   project,
+  featured,
   onOpenDemo,
 }: {
   project: Project;
+  index: number;
+  featured?: boolean;
   onOpenDemo: (url?: string) => void;
 }) {
   return (
-    <div className="rounded-xl border border-border/60 bg-card/40 backdrop-blur-sm p-5 hover:border-border transition-colors duration-200 flex flex-col gap-3 break-inside-avoid mb-4">
-      {/* Title */}
-      <h3 className="text-sm font-semibold leading-snug text-foreground">
-        {project.title}
-      </h3>
-
-      {/* Description */}
-      <p className="text-xs text-muted-foreground leading-relaxed">
-        {project.description}
-      </p>
-
-      {/* Tech badges */}
-      {project.technologies?.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 pt-1 border-t border-border/30">
-          {project.technologies.map((tech) => (
-            <Badge
-              key={tech}
-              variant="secondary"
-              className="text-xs font-normal px-2 py-0.5 rounded-md bg-muted/60 text-foreground/80 border border-border/40 hover:bg-muted hover:text-foreground transition-colors cursor-default"
-            >
-              {tech}
-            </Badge>
-          ))}
-        </div>
+    <div
+      className={cn(
+        "flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 py-6 border-b border-border/50 last:border-b-0",
+        featured && "border-b border-border",
       )}
+    >
+{/* Thumbnail — stacks on top on mobile, sits left from sm breakpoint up */}
+{project.previewImage && (
+  <div
+    className={cn(
+      "relative shrink-0 w-56 h-40",
+      featured
+        ? "sm:w-64 sm:h-44 md:w-80 md:h-56"
+        : "sm:w-60 sm:h-44 md:w-72 md:h-52",
+    )}
+  >
+    <Image
+      src={project.previewImage}
+      alt={`${project.title} preview across devices`}
+      fill
+      sizes="(min-width: 768px) 320px, (min-width: 640px) 256px, 224px"
+      className="object-contain"
+    />
+  </div>
+)}
 
-      {/* Action links */}
-      {(project.demoUrl || project.repoUrl) && (
-        <div className="flex gap-2 pt-1">
-          {project.demoUrl && (
-            <button
-              onClick={() => onOpenDemo(project.demoUrl)}
-              className="flex-1 text-[10px] font-mono tracking-wider uppercase px-3 py-1.5 rounded-md bg-foreground/10 border border-foreground/20 text-foreground/70 hover:bg-foreground/20 hover:border-foreground/40 hover:text-foreground transition-all duration-150"
-            >
-              ↗ Demo
-            </button>
-          )}
-          {project.repoUrl && (
-            <a
-              href={project.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 text-center text-[10px] font-mono tracking-wider uppercase px-3 py-1.5 rounded-md bg-foreground/10 border border-foreground/20 text-foreground/70 hover:bg-foreground/20 hover:border-foreground/40 hover:text-foreground transition-all duration-150"
-            >
-              ⌥ Repo
-            </a>
-          )}
+      {/* Content */}
+      <div className="flex-1 min-w-0 flex flex-col items-center sm:items-start gap-2 text-center sm:text-left">
+        <div className="flex items-center gap-2">
+      
+          <h3
+            className={cn(
+              "font-semibold leading-snug tracking-tight text-foreground",
+              featured ? "text-xl" : "text-base",
+            )}
+          >
+            {project.title}
+          </h3>
         </div>
-      )}
+
+        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+          {project.description}
+        </p>
+
+        {project.technologies?.length > 0 && (
+          <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 pt-1">
+            {project.technologies.map((tech) => (
+              <Badge
+                key={tech}
+                variant="secondary"
+                className="text-xs font-normal px-2 py-0.5 rounded-md bg-muted/60 text-foreground/80 border border-border/40 hover:bg-muted hover:text-foreground transition-colors cursor-default"
+              >
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        )}
+
+        <div className="pt-1.5">
+          <button
+            onClick={() => onOpenDemo(project.demoUrl ?? project.repoUrl)}
+            className="text-[10px] font-mono tracking-wider uppercase px-3 py-1.5 rounded-md bg-foreground/10 border border-foreground/20 text-foreground/70 hover:bg-foreground/20 hover:border-foreground/40 hover:text-foreground transition-all duration-150"
+          >
+            ↗ View Details
+          </button>
+        </div>
+      </div>
     </div>
-  );
-}
-
-// ─── Masonry columns ──────────────────────────────────────────────────────────
-
-function MasonryGrid({
-  projects,
-  onOpenDemo,
-}: {
-  projects: readonly Project[];
-  onOpenDemo: (url?: string) => void;
-}) {
-  // Split projects into 3 columns (Pinterest-style)
-  const columns: Project[][] = [[], [], []];
-  projects.forEach((p, i) => columns[i % 3].push(p));
-
-  return (
-    <>
-      {/* Desktop: 3-col masonry */}
-      <div className="hidden lg:flex gap-4 items-start">
-        {columns.map((col, ci) => (
-          <div key={ci} className="flex-1 flex flex-col">
-            {col.map((project) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                onOpenDemo={onOpenDemo}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
-
-      {/* Tablet: 2-col masonry */}
-      <div className="hidden sm:flex lg:hidden gap-4 items-start">
-        {[
-          projects.filter((_, i) => i % 2 === 0),
-          projects.filter((_, i) => i % 2 === 1),
-        ].map((col, ci) => (
-          <div key={ci} className="flex-1 flex flex-col">
-            {col.map((project) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                onOpenDemo={onOpenDemo}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile: 1-col */}
-      <div className="flex sm:hidden flex-col">
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.title}
-            project={project}
-            onOpenDemo={onOpenDemo}
-          />
-        ))}
-      </div>
-    </>
   );
 }
 
 // ─── Section ──────────────────────────────────────────────────────────────────
 
-const SECTION_CLASS = "mb-18   lg:mb-24 scroll-mt-24 ";
+const SECTION_CLASS = "mb-18 lg:mb-24 scroll-mt-24";
 
 export function ProjectsSection({ onOpenDemo }: ProjectsSectionProps) {
   const [activeTab, setActiveTab] = useState<ProjectTab>("web");
@@ -157,13 +120,14 @@ export function ProjectsSection({ onOpenDemo }: ProjectsSectionProps) {
   return (
     <section id="projects" className={SECTION_CLASS}>
       {/* Heading */}
-      <div className="flex items-baseline gap-3 mb-2">
+      <div className="flex items-baseline justify-between gap-3 mb-2">
         <h2 className="text-2xl font-bold tracking-tight">Projects</h2>
+      
       </div>
-      <div className="h-px w-full bg-gradient-to-r from-foreground/20 via-foreground/5 to-transparent mb-8" />
+      <div className="h-px w-full bg-linear-to-r from-foreground/20 via-foreground/5 to-transparent mb-8" />
 
       {/* Tab chips */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="flex flex-wrap gap-2 mb-2">
         {PROJECT_TABS.map((tab) => (
           <button
             key={tab.id}
@@ -180,8 +144,18 @@ export function ProjectsSection({ onOpenDemo }: ProjectsSectionProps) {
         ))}
       </div>
 
-      {/* Pinterest-style masonry grid */}
-      <MasonryGrid projects={projects} onOpenDemo={onOpenDemo} />
+      {/* Static log-style project list */}
+      <div className="mt-6">
+        {projects.map((project, i) => (
+          <ProjectRow
+            key={project.title}
+            project={project}
+            index={i}
+            featured={i === 0}
+            onOpenDemo={onOpenDemo}
+          />
+        ))}
+      </div>
     </section>
   );
 }

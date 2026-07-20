@@ -1,7 +1,9 @@
 export const webProjects = [
   {
-    title: "GeoSME Batangas",
-    description: "Web-based GIS-Enabled SME Directory and Analytics System",
+    title:
+      "GeoSME Batangas – SME Financial Technology Mapping & Analytics Platform",
+    description:
+      "GeoSME Batangas is a web-based Geographic Information System (GIS) and analytics platform developed for the CABE Research Department in Batangas. It visualizes the distribution of Small and Medium Enterprises (SMEs) and their adoption of financial technologies across municipalities, enabling researchers and stakeholders to analyze trends through interactive maps and data visualizations.",
     details:
       "Built a complete e-commerce solution with product management, shopping cart, and Stripe payment integration. Features real-time inventory updates and admin dashboard.",
     technologies: [
@@ -13,84 +15,118 @@ export const webProjects = [
     ],
     demoUrl: "https://geosme-batangas.com",
     repoUrl: "https://github.com/jerwinIT/geosme-batangas",
+    previewImage: "/images/geosme.png",
   },
   {
-    title: "GeoInvest Batangas",
-    description: "A geospatial decision-support platform for identifying high-potential business opportunities across Batangas municipalities through demographic, registry, and spatial analytics.",
+    title:
+      "SparStock – Resource Generation Office Product Catalog & Reservation System",
+    description:
+      "SparStock is a web-based product catalog and reservation system developed for the Resource Generation Office (RGO) of Batangas State University. It provides students with a centralized platform to browse available products, reserve pickup schedules, and streamline over-the-counter purchasing without requiring online payments.",
     details:
-      "Developed a real-time task management application with team collaboration features, drag-and-drop interface, and progress tracking.",
-    technologies: ["Next.js", "TailwindCSS", "ShadCN", "PostgreSQL", "RestAPI", "LeafletJS"],
-    demoUrl: "",
-    repoUrl: "https://github.com/jerwinIT/geoinvest-batangas",
+      "Unlike a traditional e-commerce platform, SparStock is designed as a catalog-based reservation system. Students can explore a directory of university products—including uniforms, school supplies, and official merchandise—check product availability, and reserve a preferred claiming schedule before completing payment at the Resource Generation Office. The system helps reduce long queues, improves inventory visibility, and simplifies the product claiming process for both students and RGO personnel. Administrative features include inventory management, product management, reservation scheduling, sales monitoring, and reporting, allowing staff to efficiently manage daily operations through a centralized dashboard.",
+    technologies: ["Next.js", "PHP", "TypeScript", "MySQL", "RestAPI"],
+    demoUrl: "https://geosme-batangas.com",
+    repoUrl: "https://github.com/jerwinIT/geosme-batangas",
+    previewImage: "/images/sparstock.png",
   },
-  {
-    title: "GeoCrime Batangas",
-    description: "A geospatial crime mapping and analysis platform for Batangas, providing crime data visualization, hotspot identification,  to enhance public safety and law enforcement strategies.",
-    details:
-      "Developed a real-time task management application with team collaboration features, drag-and-drop interface, and progress tracking.",
-    technologies: ["Next.js", "TailwindCSS", "ShadCN", "PostgreSQL", "RestAPI", "LeafletJS"],
-    demoUrl: "",
-    repoUrl: "https://github.com/jerwinIT/geocrime",
-  },
-  {
-    title: "Resource Generation Office",
-    description: "Web-based Inventory and Sales Management System",
-    details:
-      "Developed a real-time task management application with team collaboration features, drag-and-drop interface, and progress tracking.",
-    technologies: ["React", "Express.js", "Node.js", "PostgreSQL", "RestAPI"],
-    demoUrl: "",
-    repoUrl: "https://github.com/jerwinIT/resource_generation_office",
-  },
-  {
-    title: "JPJ Motorcycle Parts and Accessories",
-    description: "Web-based Inventory and Sales Management System",
-    details:
-      "Created a beautiful weather dashboard with geolocation, 7-day forecasts, and interactive weather maps using third-party APIs.",
-    technologies: ["React", "Express.js", "Node.js", "PostgreSQL", "RestAPI"],
-    demoUrl: "",
-    repoUrl: "https://github.com/jerwinIT/JPJ-Inventory-and-Sales-Management-System",
-  },
-  {
-    title: "My Portfolio Website",
-    description: "Analytics platform for social media insights",
-    details:
-      "Built an analytics dashboard that visualizes social media metrics with interactive charts, data export, and scheduled reports.",
-    technologies: ["Next.js", "React.js", "Tailwind CSS"],
-    demoUrl: "https://jerwin-peria-app-eta.vercel.app/",
-    repoUrl: "https://github.com/jerwinIT/my-profile-app",
-  },
+  // {
+  //   title: "GeoInvest Batangas",
+  //   description:
+  //     "A geospatial decision-support platform for identifying high-potential business opportunities across Batangas municipalities through demographic, registry, and spatial analytics.",
+  //   details:
+  //     "Developed a real-time task management application with team collaboration features, drag-and-drop interface, and progress tracking.",
+  //   technologies: [
+  //     "Next.js",
+  //     "TailwindCSS",
+  //     "ShadCN",
+  //     "PostgreSQL",
+  //     "RestAPI",
+  //     "LeafletJS",
+  //   ],
+  //   demoUrl: "",
+  //   repoUrl: "https://github.com/jerwinIT/geoinvest-batangas",
+  // },
+  // {
+  //   title: "GeoCrime Batangas",
+  //   description:
+  //     "A geospatial crime mapping and analysis platform for Batangas, providing crime data visualization, hotspot identification,  to enhance public safety and law enforcement strategies.",
+  //   details:
+  //     "Developed a real-time task management application with team collaboration features, drag-and-drop interface, and progress tracking.",
+  //   technologies: [
+  //     "Next.js",
+  //     "TailwindCSS",
+  //     "ShadCN",
+  //     "PostgreSQL",
+  //     "RestAPI",
+  //     "LeafletJS",
+  //   ],
+  //   demoUrl: "",
+  //   repoUrl: "https://github.com/jerwinIT/geocrime",
+  // },
+  // {
+  //   title: "Resource Generation Office",
+  //   description: "Web-based Inventory and Sales Management System",
+  //   details:
+  //     "Developed a real-time task management application with team collaboration features, drag-and-drop interface, and progress tracking.",
+  //   technologies: ["React", "Express.js", "Node.js", "PostgreSQL", "RestAPI"],
+  //   demoUrl: "",
+  //   repoUrl: "https://github.com/jerwinIT/resource_generation_office",
+  // },
+  // {
+  //   title: "JPJ Motorcycle Parts and Accessories",
+  //   description: "Web-based Inventory and Sales Management System",
+  //   details:
+  //     "Created a beautiful weather dashboard with geolocation, 7-day forecasts, and interactive weather maps using third-party APIs.",
+  //   technologies: ["React", "Express.js", "Node.js", "PostgreSQL", "RestAPI"],
+  //   demoUrl: "",
+  //   repoUrl:
+  //     "https://github.com/jerwinIT/JPJ-Inventory-and-Sales-Management-System",
+  // },
+  // {
+  //   title: "My Portfolio Website",
+  //   description: "Analytics platform for social media insights",
+  //   details:
+  //     "Built an analytics dashboard that visualizes social media metrics with interactive charts, data export, and scheduled reports.",
+  //   technologies: ["Next.js", "React.js", "Tailwind CSS"],
+  //   demoUrl: "https://jerwin-peria-app-eta.vercel.app/",
+  //   repoUrl: "https://github.com/jerwinIT/my-profile-app",
+  // },
 ];
 
 export const designProjects = [
   {
     title: "Resource Generation Office",
-    description: "A student organization website design responsible for selling uniforms and other school-related products to students.",
+    description:
+      "A student organization website design responsible for selling uniforms and other school-related products to students.",
     details:
       "Designed a modern and responsive website for the Resource Generation Office, featuring an intuitive layout, engaging visuals, and seamless navigation to enhance user experience.",
     technologies: ["Figma"],
-    demoUrl: "https://www.figma.com/design/MvAO4zgsaClBIBiCFgbOdC/Interface?node-id=0-1&t=zbj3xOhISNEVxqfj-1",
+    demoUrl:
+      "https://www.figma.com/design/MvAO4zgsaClBIBiCFgbOdC/Interface?node-id=0-1&t=zbj3xOhISNEVxqfj-1",
     repoUrl: null,
   },
-{
-  title: "GeoSME Batangas Landing Page (Draft)",
-  description: "Dark and light mode landing page design for the GeoSME Batangas platform.",
-  details:
-    "A responsive Figma prototype designed as the public entry point of GeoSME Batangas, featuring theme switching and a clean, modern layout.",
-  technologies: ["Figma", "UI/UX Design", "Prototyping"],
-  demoUrl: "https://www.figma.com/proto/ji5N1KFcYa58DjQeGDjV3F/GeoSME-Landing-Page?node-id=31-1978&starting-point-node-id=31%3A1586&t=NYtWfbqhqnMtEyrt-1",
-  repoUrl: null,
-},
-{
-  title: "SDG 2: Zero Hunger Wireframes",
-  description: "An school activity wireframe design for a web-based platform focused on SDG 2: Zero Hunger, aimed at raising awareness and providing resources to combat hunger globally.",
-  details:
-    "Designed wireframes for a web platform dedicated to SDG 2: Zero Hunger, featuring an intuitive layout, engaging visuals, and seamless navigation to enhance user experience and promote awareness about global hunger issues.",
-  technologies: ["Figma", "UI/UX Design", "Prototyping"],
-  demoUrl: "https://www.figma.com/proto/WpKuhVk6J92WXKUObE2MIR/SDG-2--Zero-Hunger-Wireframes?node-id=122-225&starting-point-node-id=122%3A287&t=A5LDAAqGOyCy1pGV-1",
-  repoUrl: null,
-}
-
-
+  {
+    title: "GeoSME Batangas Landing Page (Draft)",
+    description:
+      "Dark and light mode landing page design for the GeoSME Batangas platform.",
+    details:
+      "A responsive Figma prototype designed as the public entry point of GeoSME Batangas, featuring theme switching and a clean, modern layout.",
+    technologies: ["Figma", "UI/UX Design", "Prototyping"],
+    demoUrl:
+      "https://www.figma.com/proto/ji5N1KFcYa58DjQeGDjV3F/GeoSME-Landing-Page?node-id=31-1978&starting-point-node-id=31%3A1586&t=NYtWfbqhqnMtEyrt-1",
+    repoUrl: null,
+  },
+  {
+    title: "SDG 2: Zero Hunger Wireframes",
+    description:
+      "An school activity wireframe design for a web-based platform focused on SDG 2: Zero Hunger, aimed at raising awareness and providing resources to combat hunger globally.",
+    details:
+      "Designed wireframes for a web platform dedicated to SDG 2: Zero Hunger, featuring an intuitive layout, engaging visuals, and seamless navigation to enhance user experience and promote awareness about global hunger issues.",
+    technologies: ["Figma", "UI/UX Design", "Prototyping"],
+    demoUrl:
+      "https://www.figma.com/proto/WpKuhVk6J92WXKUObE2MIR/SDG-2--Zero-Hunger-Wireframes?node-id=122-225&starting-point-node-id=122%3A287&t=A5LDAAqGOyCy1pGV-1",
+    repoUrl: null,
+  },
 ];
 
 export const experienceData = [
