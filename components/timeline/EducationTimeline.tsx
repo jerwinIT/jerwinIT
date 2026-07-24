@@ -18,7 +18,7 @@ const EDUCATION: EducationEntry[] = [
     institution: "Batangas State University",
     campus: "TNEU Lipa Campus",
     period: "August 2022 – 2026",
-    achievements: ["Dean's Lister for academic excellence", "Latin Honor"],
+    achievements: ["Cum laude", "Dean's Lister for academic excellence"],
   },
 ];
 

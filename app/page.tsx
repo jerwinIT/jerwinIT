@@ -37,21 +37,6 @@ function PulsingDot({ className }: { className: string }) {
   );
 }
 
-function ProfileStatus() {
-  return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
-      <span className="flex items-center gap-2">
-        <PulsingDot className="bg-emerald-500" />
-        Open to work | Actively seeking new opportunities
-      </span>
-      <span className="flex items-center gap-2">
-        <PulsingDot className="bg-sky-500" />
-        Freelancing at Synvanta Digital Solutions
-      </span>
-    </div>
-  );
-}
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ProfilePage() {
@@ -82,10 +67,6 @@ export default function ProfilePage() {
 
         <main className="min-w-0 flex-1">
           <div className="mx-auto w-full px-4 py-12 sm:px-6 lg:mt-0 lg:px-8 lg:py-12 xl:px-12">
-            <div className="mb-6">
-              <ProfileStatus />
-            </div>
-
             <OverviewSection isDarkMode={isDarkMode} />
             <SkillsSection />
             <ExperienceSection />

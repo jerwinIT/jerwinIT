@@ -2,8 +2,16 @@ import type { Project, CertificationItem, BaseExperienceItem } from "@/types";
 
 // ─── Project tabs ───────────────────────────────────────────────────────────────
 export const PROJECT_TABS = [
-  { id: "web", label: "Web Development Projects" },
-  { id: "design", label: "UI/UX and Figma Designs" },
+  { id: "client", label: "Client Projects" },
+  { id: "side", label: "Side Projects" },
+] as const;
+
+// ─── Project status options ─────────────────────────────────────────────────────
+export const PROJECT_STATUSES = [
+  "Live",
+  "Ongoing",
+  "Under Maintenance",
+  "Archived",
 ] as const;
 
 // ─── Experience tabs ────────────────────────────────────────────────────────────

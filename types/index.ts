@@ -49,16 +49,27 @@ export interface SkillGroup {
 }
 
 // ─── Projects ──────────────────────────────────────────────────────────────────
-export type ProjectTab = "web" | "design";
+export type ProjectTab = "client" | "side";
 
 export interface Project {
   readonly title: string;
   readonly description: string;
-  readonly details: string;
+  readonly details?: string;
+  readonly problem?: string;
+  /** What you personally learned/took away from building this project.
+   *  When present, the detail view shows "What I Learned" instead of
+   *  "Problem Addressed". */
+  readonly learnings?: string;
+  readonly features?: readonly string[];
   readonly technologies: readonly string[];
   readonly demoUrl?: string;
-  readonly repoUrl?: string | null;
+  readonly repoUrl?: string;
+  /** Set true when the repo exists but should NOT be publicly linked
+   *  (e.g. client/company code). When true, the "Source Code" button
+   *  is replaced with a "Private" indicator even if repoUrl is set. */
+  readonly repoPrivate?: boolean;
   readonly previewImage?: string;
+  readonly status: string; // e.g. "Live", "Ongoing", "Under Maintenance", "Archived"
 }
 
 // ─── Experience ────────────────────────────────────────────────────────────────
