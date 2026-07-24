@@ -88,7 +88,7 @@ export const sideProjects = [
     demoUrl: "",
     repoUrl: "https://github.com/jerwinIT/resource-generation-office",
     previewImage: "/images/sparstock.png",
-    status: "Ongoing",
+    status: "Archived",
   },
   {
     title: "Resume AI – AI-Powered Resume Builder & Optimizer",
@@ -118,7 +118,7 @@ export const sideProjects = [
     repoUrl: "https://github.com/jerwinIT/resume-ai",
     repoPrivate: false,
     previewImage: "/images/resumeai.png",
-    status: "Ongoing",
+    status: "Archived",
   },
 ];
 
