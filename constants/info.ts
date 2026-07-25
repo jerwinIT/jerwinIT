@@ -72,23 +72,41 @@ export const sideProjects = [
   {
     title:
       "SparStock – Resource Generation Office Product Catalog & Reservation System",
+
     description:
-      "SparStock is a web-based product catalog and reservation system developed for the Resource Generation Office (RGO) of Batangas State University. It provides students with a centralized platform to browse available products, reserve pickup schedules, and streamline over-the-counter purchasing without requiring online payments.",
+      "SparStock is a web-based product catalog and reservation system developed for the Resource Generation Office (RGO) of Batangas State University. It enables students to browse available university products, reserve pickup schedules, and streamline over-the-counter purchasing while allowing RGO personnel to manage products and reservation slots through Google Sheets.",
+
     details:
-      "Unlike a traditional e-commerce platform, SparStock is designed as a catalog-based reservation system. Students can explore a directory of university products—including uniforms, school supplies, and official merchandise—check product availability, and reserve a preferred claiming schedule before completing payment at the Resource Generation Office. The system helps reduce long queues, improves inventory visibility, and simplifies the product claiming process for both students and RGO personnel. Administrative features include inventory management, product management, reservation scheduling, sales monitoring, and reporting, allowing staff to efficiently manage daily operations through a centralized dashboard.",
+      "SparStock is designed as a catalog-based reservation system rather than a traditional e-commerce platform. Students can explore university products—including school uniforms, school supplies, and official merchandise—view product details, and reserve an available pickup schedule before completing payment at the Resource Generation Office. To simplify operations, product information and reservation schedules are managed through Google Sheets, eliminating the need for a dedicated administrative dashboard. The Laravel backend synchronizes data from Google Sheets, ensuring students always have access to up-to-date product information and reservation availability while reducing long queues and improving the pickup experience.",
+
     learnings:
-      "Working on SparStock taught me how to design a reservation-based workflow instead of a typical checkout flow — modeling stock holds, pickup slots, and status transitions without needing payment integration. I got hands-on experience building an admin dashboard that had to serve non-technical staff, which pushed me to think more about usability and clear data presentation, and I strengthened my REST API design skills connecting a PHP/MySQL backend to a Next.js frontend.",
+      "Building SparStock is helping me deepen my understanding of full-stack application architecture using Next.js and Laravel. Through this project, I'm learning how to design RESTful APIs, model reservation workflows, integrate Google OAuth authentication, and synchronize application data with Google Sheets using the Google Sheets API. It also provides hands-on experience implementing business logic, database relationships, and backend services while creating a solution that is practical for non-technical users.",
+
     features: [
-      "Browsable product catalog with real-time availability for uniforms, supplies, and merchandise",
-      "Pickup scheduling so students can reserve a claiming slot ahead of time",
-      "Over-the-counter payment flow — no online payment gateway required",
-      "Admin dashboard for inventory, reservations, sales monitoring, and reporting",
+      "Browse university products with category filtering and search functionality",
+      "View product details, images, and available variations",
+      "Reserve available pickup dates and time slots online",
+      "Google OAuth authentication restricted to BatState student accounts",
+      "Google Sheets integration for managing products and reservation schedules",
+      "Automatic synchronization between Google Sheets and the application database",
     ],
-    technologies: ["Next.js", "Laravel", "TypeScript", "MySQL", "RestAPI"],
+
+    technologies: [
+      "Next.js",
+      "Laravel",
+      "TypeScript",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Google OAuth",
+      "Google Sheets API",
+      "REST API",
+    ],
+
     demoUrl: "",
     repoUrl: "https://github.com/jerwinIT/resource-generation-office",
     previewImage: "/images/sparstock.png",
-    status: "Archived",
+    status: "Ongoing",
   },
   {
     title: "Resume AI – AI-Powered Resume Builder & Optimizer",
