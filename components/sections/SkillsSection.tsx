@@ -99,7 +99,7 @@ const TECH_GROUPS: { label: string; emoji: string; items: TechName[] }[] = [
   {
     label: "Cloud & Deployment",
     emoji: "☁",
-    items: ["Docker", "Vercel", "AWS", "Hostinger"],
+    items: ["Firebase", "Docker", "Vercel", "AWS", "Hostinger"],
   },
   {
     label: "Testing & Security",

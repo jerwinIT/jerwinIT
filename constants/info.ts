@@ -138,6 +138,44 @@ export const sideProjects = [
     previewImage: "/images/resumeai.png",
     status: "Archived",
   },
+  {
+    title: "TaskFlow – Private Task Management Application",
+
+    description:
+      "TaskFlow is a private task management web application that allows users to securely organize their personal tasks using Firebase Authentication and Cloud Firestore. Each user's tasks are isolated through Firestore security rules, ensuring complete privacy.",
+
+    details:
+      "TaskFlow is a full-stack task management application built with Next.js App Router and Firebase. Users can register, sign in, and manage their own tasks through a clean and responsive interface. The application supports creating, editing, completing, filtering, and deleting tasks while leveraging Cloud Firestore for real-time data storage. Security is enforced at the database level using Firestore Security Rules, ensuring every user can only access their own data. An optional Firebase Cloud Function records activity whenever tasks are created or completed.",
+
+    learnings:
+      "Building TaskFlow strengthened my understanding of Firebase as a Backend-as-a-Service platform. I gained hands-on experience implementing email/password authentication, designing secure Firestore data models, writing Firestore Security Rules for user-level authorization, and creating reusable React hooks for real-time CRUD operations. It also improved my understanding of protected routing, state management with React Context, and integrating cloud services into a modern Next.js application.",
+
+    features: [
+      "Email/password authentication with Firebase Authentication",
+      "Create, edit, complete, filter, and delete personal tasks",
+      "Private task management enforced through Firestore Security Rules",
+      "Real-time task synchronization using Cloud Firestore",
+      "Protected dashboard accessible only to authenticated users",
+      "Responsive interface optimized for desktop and mobile devices",
+      "Optional Firebase Cloud Function for task activity logging",
+    ],
+
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Firebase Authentication",
+      "Cloud Firestore",
+      "Firebase Hosting",
+      "Firebase Cloud Functions",
+      "React Context API",
+    ],
+
+    demoUrl: "",
+    repoUrl: "https://github.com/jerwinIT/taskflow-firebase",
+    previewImage: "/images/taskflow.png",
+    status: "Archived",
+  },
 ];
 
 export const experienceData = [
