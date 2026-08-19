@@ -15,7 +15,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 
-const SECTION_CLASS = "mb-18 lg:mb-24 scroll-mt-24 ";
+const SECTION_CLASS = "mb-18 lg:mb-24 scroll-mt-24 mt-12";
 
 interface OverviewSectionProps {
   isDarkMode: boolean;
