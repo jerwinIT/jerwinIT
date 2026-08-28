@@ -3,7 +3,7 @@ import { certificationData } from "@/constants/info";
 
 export function CertificationSection() {
   return (
-    <section id="certificates" className="scroll-mt-24 mb-60">
+    <section id="certificates" className="scroll-mt-24 ">
       <div className="flex items-baseline gap-3 mb-2">
         <h2 className="text-2xl font-bold tracking-tight">
           Certifications & Seminars

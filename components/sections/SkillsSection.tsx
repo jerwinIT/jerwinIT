@@ -18,6 +18,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { TECH_ICONS, TechName } from "@/lib/tech-icons";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // ─── Simple SVG icon map (inline, no extra deps) ─────────────────────────────
 // Using Simple Icons' SVG paths (MIT-compatible usage for display).
@@ -231,38 +232,41 @@ export function SkillsSection() {
         {/* Tech grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {visibleGroups.map((group) => (
-            <div
+            <Card
               key={group.label}
-              className="rounded-xl border border-border/60 bg-card/40 backdrop-blur-sm p-5 hover:border-border transition-colors duration-200 group"
+              className="gap-0 border-border/60 bg-card/60 py-0 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
             >
-              {/* Card header */}
-              <div className="flex items-center gap-2 mb-4">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-muted/60 text-muted-foreground">
-                  {GROUP_ICONS[group.label] ?? (
-                    <span className="text-base font-mono leading-none">
-                      {group.emoji}
-                    </span>
-                  )}
-                </span>
-                <span className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
-                  {group.label}
-                </span>
-              </div>
+              <CardHeader className="px-5 pt-5 pb-0">
+                <CardTitle className="flex items-center gap-2">
+                  <span className="inline-flex size-7 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    {GROUP_ICONS[group.label] ?? (
+                      <span className="font-mono text-base leading-none">
+                        {group.emoji}
+                      </span>
+                    )}
+                  </span>
 
-              {/* Badges with icons */}
-              <div className="flex flex-wrap gap-1.5">
-                {group.items.map((item) => (
-                  <Badge
-                    key={item}
-                    variant="secondary"
-                    className="flex items-center gap-1 text-xs font-normal px-2 py-0.5 rounded-md bg-muted/60 text-foreground/80 border border-border/40 hover:bg-muted hover:text-foreground transition-colors cursor-default"
-                  >
-                    <TechIcon name={item} />
-                    {item}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+                  <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    {group.label}
+                  </span>
+                </CardTitle>
+              </CardHeader>
+
+              <CardContent className="px-5 pt-4 pb-5">
+                <div className="flex flex-wrap gap-1.5">
+                  {group.items.map((item) => (
+                    <Badge
+                      key={item}
+                      variant="secondary"
+                      className="flex cursor-default items-center gap-1 rounded-md border border-border/50 bg-secondary/70 px-2 py-0.5 text-xs font-normal text-secondary-foreground transition-colors hover:border-primary/30 hover:bg-primary/10 hover:text-primary"
+                    >
+                      <TechIcon name={item} />
+                      {item}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

@@ -43,7 +43,7 @@ export function DesktopSidebar({
             />
             <div>
               <h1 className="text-lg font-bold text-foreground leading-tight">
-                My Professional
+                Professional
               </h1>
               <h2 className="text-lg font-bold text-foreground leading-tight">
                 Portfolio

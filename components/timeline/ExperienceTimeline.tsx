@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { ExperienceItem, WorkExperienceItem } from "@/types";
@@ -47,9 +49,9 @@ export const workExperiences: WorkExperienceItem[] = [
     type: "Internship",
     location: "Remote",
     bullets: [
-      "Designed and developed a RESTful API using Node.js, structuring clean and scalable endpoints to support core application functionality.",
-      "Implemented middleware layers to handle request processing, validation, and error management across API routes.",
-      "Integrated security measures into the API layer to protect sensitive data and enforce access controls.",
+      "Established the backend foundation for a planned landing page using Node.js and Express.js, including the initial server configuration and reusable boilerplate.",
+      "Organized a scalable file architecture and configured environment variables to support maintainability and future frontend integration.",
+      "Implemented protective middleware, including rate limiting and request guards, to strengthen the security of future API endpoints.",
     ],
     technologies: ["Node.js", "Express.js", "PostgreSQL", "Postman"],
   },
@@ -73,96 +75,130 @@ export function ExperienceTimeline({ items }: ExperienceTimelineProps) {
     <div className="space-y-4">
       {entries.map((entry, index) => {
         const isOpen = openIndex === index;
+        const contentId = `experience-content-${index}`;
 
         return (
-          <div
-            key={index}
+          <Card
+            key={`${entry.title}-${entry.period}`}
             className={cn(
-              "rounded-xl border transition-colors duration-200",
+              "gap-0 overflow-hidden py-0 transition-all duration-200",
               isOpen
-                ? "border-border bg-card/60 backdrop-blur-sm"
-                : "border-border/50 bg-card/30 hover:border-border/80",
+                ? "border-primary/40 bg-card/70 shadow-lg shadow-primary/5"
+                : "border-border/60 bg-card/40 hover:border-primary/30 hover:bg-card/60",
             )}
           >
-            {/* Header — always visible, clickable */}
+            {/* Clickable card header */}
             <button
               type="button"
+              aria-expanded={isOpen}
+              aria-controls={contentId}
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="w-full text-left p-5 flex items-start justify-between gap-4"
+              className="w-full text-left"
             >
-              <div className="flex gap-4 items-start min-w-0">
-                {/* Index number */}
-                <span className="shrink-0 mt-0.5 text-[10px] font-mono tracking-[0.2em] text-muted-foreground/50 w-5 text-right">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+              <CardHeader className="flex-row items-start justify-between gap-4 p-5">
+                <div className="flex min-w-0 items-start gap-4">
+                  {/* Timeline/index indicator */}
+                  <div className="flex shrink-0 flex-col items-center gap-2">
+                    <span
+                      className={cn(
+                        "flex size-8 items-center justify-center rounded-full border font-mono text-[10px] transition-colors",
+                        isOpen
+                          ? "border-primary/40 bg-primary/10 text-primary"
+                          : "border-border bg-secondary text-muted-foreground",
+                      )}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
 
-                <div className="min-w-0">
-                  {/* Role */}
-                  <p className="text-sm font-semibold text-foreground leading-snug">
-                    {entry.role}
-                  </p>
-                  {/* Company */}
-                  <p className="text-xs text-muted-foreground mt-0.5 truncate">
-                    {entry.title}
-                  </p>
-                  {/* Meta row */}
-                  <div className="flex flex-wrap items-center gap-2 mt-2">
-                    <span className="text-[10px] font-mono tracking-wide text-muted-foreground/70">
-                      {entry.period}
-                    </span>
-                    <span className="w-px h-3 bg-border/60" />
-                    <span className="text-[10px] font-mono tracking-wide text-muted-foreground/70">
-                      {entry.organization}
-                    </span>
-                    <span className="w-px h-3 bg-border/60" />
-                    <span className="inline-flex items-center text-[10px] font-mono tracking-wider uppercase px-2 py-0.5 rounded-full border border-border/50 text-muted-foreground/70">
-                      {entry.type}
-                    </span>
+                    <span aria-hidden="true" className="h-5 w-px bg-border" />
+                  </div>
+
+                  <div className="min-w-0">
+                    {/* Role */}
+                    <p
+                      className={cn(
+                        "text-sm font-semibold leading-snug transition-colors",
+                        isOpen ? "text-primary" : "text-foreground",
+                      )}
+                    >
+                      {entry.role}
+                    </p>
+
+                    {/* Company */}
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {entry.title}
+                    </p>
+
+                    {/* Metadata */}
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      <span className="font-mono text-[10px] tracking-wide text-muted-foreground">
+                        {entry.period}
+                      </span>
+
+                      <span className="h-3 w-px bg-border" aria-hidden="true" />
+
+                      <span className="font-mono text-[10px] tracking-wide text-muted-foreground">
+                        {entry.organization}
+                      </span>
+
+                      <Badge
+                        variant="outline"
+                        className="rounded-full border-primary/20 bg-primary/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary"
+                      >
+                        {entry.type}
+                      </Badge>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Chevron */}
-              <span
-                className={cn(
-                  "shrink-0 mt-1 flex items-center justify-center w-6 h-6 rounded-md border transition-all duration-200 text-xs font-mono",
-                  isOpen
-                    ? "bg-foreground/15 border-foreground/30 text-foreground rotate-180"
-                    : "bg-foreground/[0.06] border-border/60 text-muted-foreground hover:bg-foreground/10 hover:border-foreground/25 hover:text-foreground",
-                )}
-              >
-                ▾
-              </span>
+                <span
+                  className={cn(
+                    "flex size-7 shrink-0 items-center justify-center rounded-md border transition-all duration-200",
+                    isOpen
+                      ? "border-primary/30 bg-primary/10 text-primary"
+                      : "border-border bg-secondary text-muted-foreground",
+                  )}
+                >
+                  <ChevronDown
+                    className={cn(
+                      "size-4 transition-transform duration-200",
+                      isOpen && "rotate-180",
+                    )}
+                  />
+                </span>
+              </CardHeader>
             </button>
 
-            {/* Expanded body */}
+            {/* Expandable card content */}
             {isOpen && (
-              <div className="px-5 pb-5 space-y-5 border-t border-border/40">
-                {/* Bullet points */}
-                <ul className="space-y-2.5 pt-4">
-                  {entry.bullets.map((bullet, bi) => (
+              <CardContent
+                id={contentId}
+                className="border-t border-border/50 px-5 py-5"
+              >
+                <ul className="space-y-3">
+                  {entry.bullets.map((bullet, bulletIndex) => (
                     <li
-                      key={bi}
-                      className="flex gap-3 text-xs text-muted-foreground leading-relaxed"
+                      key={bulletIndex}
+                      className="flex gap-3 text-xs leading-relaxed text-muted-foreground"
                     >
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-foreground/30 shrink-0" />
-                      {bullet}
+                      <span className="mt-1.5 size-1 shrink-0 rounded-full bg-primary/70" />
+                      <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Tech stack */}
                 {entry.technologies && entry.technologies.length > 0 && (
-                  <div className="pt-3 border-t border-border/30 space-y-2">
-                    <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground/60">
+                  <div className="mt-5 space-y-3 border-t border-border/40 pt-4">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                       Tech Stack
                     </p>
+
                     <div className="flex flex-wrap gap-1.5">
                       {entry.technologies.map((tech) => (
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="text-xs font-normal px-2 py-0.5 rounded-md bg-muted/60 text-foreground/80 border border-border/40 hover:bg-muted hover:text-foreground transition-colors cursor-default"
+                          className="cursor-default rounded-md border border-border/50 bg-secondary/70 px-2 py-0.5 text-xs font-normal text-secondary-foreground transition-colors hover:border-primary/30 hover:bg-primary/10 hover:text-primary"
                         >
                           {tech}
                         </Badge>
@@ -170,9 +206,9 @@ export function ExperienceTimeline({ items }: ExperienceTimelineProps) {
                     </div>
                   </div>
                 )}
-              </div>
+              </CardContent>
             )}
-          </div>
+          </Card>
         );
       })}
     </div>

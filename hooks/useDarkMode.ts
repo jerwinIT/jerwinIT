@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
  * Syncs a dark/light mode boolean with the `dark` class on <html>.
  * Defaults to dark mode.
  */
-export function useDarkMode(defaultDark = true) {
+export function useDarkMode(defaultDark = false) {
   const [isDarkMode, setIsDarkMode] = useState(defaultDark);
 
   useEffect(() => {
